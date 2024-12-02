@@ -15,11 +15,11 @@ type statusMessage = string
 type languageCode = string | 'en'|'zh'
 
 type inputParams = {
-    code: statusCode;
-    lang?: languageCode;
+  code: statusCode;
+  lang?: languageCode;
 }
 
 type outputContents = {
-    code: statusCode;
-    message: statusMessage;
+  code: statusCode;
+  message: statusMessage;
 }
