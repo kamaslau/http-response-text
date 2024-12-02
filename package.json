@@ -6,8 +6,10 @@
   "description": "In-takes HTTP status code and language code (default to 'en'), spits out human-readable i18n text message.",
   "keywords": [
     "HTTP code",
-    "HTTP statu",
-    "HTTP message"
+    "HTTP status",
+    "HTTP message",
+    "HTTP status code",
+    "i18n"
   ],
   "engines": {
     "node": "^22 || >=23",
@@ -33,7 +35,6 @@
     "@types/node": "^22.10.1",
     "typescript": "^5.7.2"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "packageManager": "pnpm@9.14.4"
 }
