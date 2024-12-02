@@ -13,7 +13,6 @@ jobs:
       - name: Action digest
         run: |
           echo "🎉 The job was triggered by '${{ github.event_name }}' event on branch '${{ github.ref }}' of repository '${{ github.repository }}', running on '${{ runner.os }}/${{ runner.arch }}' runner."
-          echo "Operating image '${{ env.REGISTRY }}/${{ github.repository }}'"
 
       - name: Check out repository code
         uses: actions/checkout@v4
