@@ -1,0 +1,30 @@
+name: Publish packages to NPM
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  publish:
+    runs-on: [ubuntu-latest]
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Action digest
+        run: |
+          echo "🎉 The job was triggered by '${{ github.event_name }}' event on branch '${{ github.ref }}' of repository '${{ github.repository }}', running on '${{ runner.os }}/${{ runner.arch }}' runner."
+          echo "Operating image '${{ env.REGISTRY }}/${{ github.repository }}'"
+
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Do publish
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          registry-url: "https://registry.npmjs.org"
+      - run: npm i -g npm@latest
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
