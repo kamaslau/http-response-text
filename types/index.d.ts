@@ -23,3 +23,5 @@ type outputContents = {
   code: statusCode;
   message: statusMessage;
 }
+
+type dictRecord = Record<number, string>

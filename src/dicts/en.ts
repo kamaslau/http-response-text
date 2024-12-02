@@ -1,4 +1,4 @@
-export const dict = {
+export const dict: dictRecord = {
   // Informational responses
   100: 'Continue',
   101: 'Switching Protocols',
