@@ -12,7 +12,7 @@ type statusServerError = 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 5
 type statusCode = number | statusInformational | statusSuccessful | statusRedirection | statusClientError | statusServerError
 type statusMessage = string
 
-type languageCode = string | 'en'|'zh'
+type languageCode = string | 'en' | 'zh'
 
 type inputParams = {
   code: statusCode;
