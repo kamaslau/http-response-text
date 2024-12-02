@@ -1,4 +1,4 @@
-export const main = async (code: statusCode = 404, lang: languageCode = 'en'): Promise<outputContents> => {
+export const getStatus = async (code: statusCode = 404, lang: languageCode = 'en'): Promise<outputContents> => {
   const result = {
     code,
     message: await lookUp(lang)
