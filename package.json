@@ -36,5 +36,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {},
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "packageManager": "pnpm@9.14.4"
 }
