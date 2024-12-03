@@ -1,4 +1,4 @@
-# http-status-i18n
+# http-response-text
 
 In-takes HTTP status code and language code (default to 'en'), spits out human-readable i18n text message.
 
