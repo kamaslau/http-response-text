@@ -1,9 +1,9 @@
 {
-  "name": "http-status-i18n",
+  "name": "http-response-text",
   "version": "0.1.2",
   "author": "Lau, Kamas <kamaslau@dingtalk.com> (https://www.kamaslau.com/)",
   "license": "MIT",
-  "description": "In-takes HTTP status code and language code (default to 'en'), spits out human-readable i18n text message.",
+  "description": "In-takes HTTP status code and language code (default to 'en'), spits out human-readable response text.",
   "keywords": [
     "HTTP code",
     "HTTP status",
