@@ -1,6 +1,6 @@
 {
   "name": "http-response-text",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Lau, Kamas <kamaslau@dingtalk.com> (https://www.kamaslau.com/)",
   "license": "MIT",
   "description": "In-takes HTTP status code and language code (default to 'en'), spits out human-readable response text.",
