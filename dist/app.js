@@ -5,6 +5,5 @@ export const getStatus = async (code = 404, lang = 'en') => {
         code,
         message: dicts[lang]?.[code]
     };
-    console.log('result: ', result);
     return result;
 };
