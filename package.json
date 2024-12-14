@@ -24,11 +24,11 @@
     "prepare": "node .husky/install.mjs"
   },
   "devDependencies": {
-    "@eslint/js": "^9.16.0",
+    "@eslint/js": "^9.17.0",
     "@tsconfig/node22": "^22.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.2",
-    "eslint": "^9.16.0",
+    "eslint": "^9.17.0",
     "husky": "^9.1.7",
     "typescript": "^5.7.2"
   },
