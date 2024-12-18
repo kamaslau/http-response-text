@@ -19,3 +19,12 @@ const findById = async (collectionName, id) => {
   // ...
 };
 ```
+
+Which would return you a response object like this:
+
+```javascript
+{
+  code: 404,
+  message: 'Not Found'
+}
+```
