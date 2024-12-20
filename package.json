@@ -43,5 +43,5 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "pnpm@9.15.1"
 }
