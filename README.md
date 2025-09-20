@@ -1,5 +1,8 @@
 # http-response-text
 
+![npm](https://img.shields.io/npm/v/http-response-text)
+![NPM Downloads](https://img.shields.io/npm/dy/http-response-text)
+
 In-takes HTTP status code and language code (default to 'en'), spits out response object with corresponding human-readable text message.
 
 Based on [MDN web docs for HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
