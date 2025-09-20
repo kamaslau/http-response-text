@@ -12,25 +12,23 @@
     "i18n"
   ],
   "engines": {
-    "node": "^22 || >=23",
-    "pnpm": "^9 || >=10"
+    "node": "^24 || >=23"
   },
   "type": "module",
   "main": "dist/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "build": "tsc",
     "lint": "eslint",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@eslint/js": "^9.24.0",
-    "@tsconfig/node22": "^22.0.1",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^22.14.0",
-    "eslint": "^9.24.0",
+    "@eslint/js": "^9.36.0",
+    "@tsconfig/node24": "^24.0.1",
+    "@types/node": "^24.5.2",
+    "eslint": "^9.36.0",
     "husky": "^9.1.7",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "repository": {
     "type": "git",
