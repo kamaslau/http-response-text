@@ -1,8 +1,10 @@
 export const dict = {
+    // Informational responses
     100: 'Continue',
     101: 'Switching Protocols',
     102: 'Processing',
     103: 'Early Hints',
+    // Successful responses
     200: 'OK',
     201: 'Created',
     202: 'Accepted',
@@ -13,15 +15,17 @@ export const dict = {
     207: 'Multi-Status',
     208: 'Already Reported',
     226: 'IM Used',
+    // Redirection messages
     300: 'Multiple Choices',
     301: 'Moved Permanently',
     302: 'Found',
     303: 'See Other',
     304: 'Not Modified',
-    305: 'Use Proxy',
-    306: 'Switch Proxy',
+    305: 'Use Proxy', // Deprecated
+    306: 'Switch Proxy', // Unused
     307: 'Temporary Redirect',
     308: 'Permanent Redirect',
+    // Client error responses
     400: 'Bad Request',
     401: 'Unauthorized',
     402: 'Payment Required',
@@ -51,6 +55,7 @@ export const dict = {
     429: 'Too Many Requests',
     431: 'Request Header Fields Too Large',
     451: 'Unavailable For Legal Reasons',
+    // Server error responses
     500: 'Internal Server Error',
     501: 'Not Implemented',
     502: 'Bad Gateway',

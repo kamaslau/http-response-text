@@ -1,6 +1,6 @@
 import { dict as en } from './dicts/en.js'
 
-let dicts = { en }
+const dicts: Record<string, dictRecord> = { en }
 
 export const getStatus = async (code: statusCode = 404, lang: languageCode = 'en'): Promise<outputContents> => {
   const result = {

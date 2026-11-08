@@ -1,8 +1,10 @@
 export const dict = {
+    // 信息性响应
     100: '可继续',
     101: '协议切换中',
     102: '处理中',
     103: '可预加载',
+    // 成功响应
     200: '请求成功',
     201: '已创建',
     202: '已接收',
@@ -13,15 +15,17 @@ export const dict = {
     207: '多种状态可用',
     208: '已回报',
     226: '已返回增量',
+    // 重定向消息
     300: 'Multiple Choices',
     301: 'Moved Permanently',
     302: 'Found',
     303: 'See Other',
     304: 'Not Modified',
-    305: 'Use Proxy',
-    306: 'Switch Proxy',
+    305: 'Use Proxy', // Deprecated
+    306: 'Switch Proxy', // Unused
     307: 'Temporary Redirect',
     308: 'Permanent Redirect',
+    // 客户端错误响应
     400: 'Bad Request',
     401: 'Unauthorized',
     402: 'Payment Required',
@@ -51,6 +55,7 @@ export const dict = {
     429: 'Too Many Requests',
     431: 'Request Header Fields Too Large',
     451: 'Unavailable For Legal Reasons',
+    // 服务端错误响应
     500: 'Internal Server Error',
     501: 'Not Implemented',
     502: 'Bad Gateway',
