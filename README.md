@@ -7,6 +7,8 @@ In-takes HTTP status code and language code (default to 'en'), spits out respons
 
 Based on [MDN web docs for HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 
+Supported languages: English (`en`) and Chinese (`zh`).
+
 ## Installation
 
 - PNPM `pnpm add http-response-text`
@@ -19,18 +21,17 @@ Import the _getStatus_ method and call it with a numeric status code.
 For example, the following code snippet validates a user input object id for MongoDB and return an 404 response object for non-valid payload:
 
 ```javascript
-import { MongoClient, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
 import { getStatus } from "http-response-text";
 
 const findById = async (collectionName, id) => {
-  // console.log("findById: ", collectionName, id);
   if (!ObjectId.isValid(id)) return getStatus(404) ?? null;
 
   // ...
 };
 ```
 
-Which would return you a response object like this:
+This will return an object like this:
 
 ```javascript
 {
