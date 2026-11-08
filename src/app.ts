@@ -1,4 +1,5 @@
 import { dict as en } from './dicts/en.js'
+import type { dictRecord, languageCode, outputContents, statusCode } from './types.js'
 
 const dicts: Record<string, dictRecord> = { en }
 

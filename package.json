@@ -16,6 +16,7 @@
   },
   "type": "module",
   "main": "dist/app.js",
+  "types": "dist/app.d.ts",
   "scripts": {
     "test": "node --test",
     "build": "tsc",

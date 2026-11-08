@@ -1,3 +1,5 @@
+import type { dictRecord } from '../types.js'
+
 export const dict: dictRecord = {
   // Informational responses
   100: 'Continue',

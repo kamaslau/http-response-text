@@ -1,3 +1,5 @@
+import type { dictRecord } from '../types.js'
+
 export const dict: dictRecord = {
   // 信息性响应
   100: '可继续',

@@ -1,14 +1,12 @@
 {
   "extends": "@tsconfig/node26/tsconfig.json",
-  "include": ["src/**/*", "types"],
+  "include": ["src/**/*"],
   "compilerOptions": {
     "paths": {
       "@/*": ["./src/*"]
     },
-    "typeRoots": ["node_modules/@types", "types"],
     "rootDir": "src",
     "outDir": "dist",
-    "lib": ["esnext", "DOM"],
-    "types": ["node"]
+    "declaration": true
   }
 }
