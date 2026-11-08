@@ -1,5 +1,6 @@
 # http-response-text
 
+[![Publish packages to NPM](https://github.com/kamaslau/http-response-text/actions/workflows/publish.yml/badge.svg)](https://github.com/kamaslau/http-response-text/actions/workflows/publish.yml)
 ![npm](https://img.shields.io/npm/v/http-response-text)
 ![NPM Downloads](https://img.shields.io/npm/dy/http-response-text)
 
