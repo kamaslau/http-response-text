@@ -1,5 +1,8 @@
 # http-response-text
 
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/kamaslau/http-response-text)
+![Node Current](https://img.shields.io/node/v/http-response-text)
 [![Publish packages to NPM](https://github.com/kamaslau/http-response-text/actions/workflows/publish.yml/badge.svg)](https://github.com/kamaslau/http-response-text/actions/workflows/publish.yml)
 ![npm](https://img.shields.io/npm/v/http-response-text)
 ![NPM Downloads](https://img.shields.io/npm/dy/http-response-text)

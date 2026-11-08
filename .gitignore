@@ -1,11 +1,11 @@
+# Misc
+.DS_Store
+
+# Node.js
+node_modules/
+
 # Logs
 logs
 *.log
 npm-debug.log*
 .pnpm-debug.log*
-
-# Dependency directories
-node_modules/
-
-# Misc
-.DS_Store
