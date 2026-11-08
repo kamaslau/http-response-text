@@ -1,5 +1,6 @@
 import { dict as en } from './dicts/en.js';
-const dicts = { en };
+import { dict as zh } from './dicts/zh.js';
+const dicts = { en, zh };
 export const getStatus = async (code = 404, lang = 'en') => {
     const result = {
         code,

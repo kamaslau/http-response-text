@@ -1,7 +1,8 @@
 import { dict as en } from './dicts/en.js'
+import { dict as zh } from './dicts/zh.js'
 import type { dictRecord, languageCode, outputContents, statusCode } from './types.js'
 
-const dicts: Record<string, dictRecord> = { en }
+const dicts: Record<languageCode, dictRecord> = { en, zh }
 
 export const getStatus = async (code: statusCode = 404, lang: languageCode = 'en'): Promise<outputContents> => {
   const result = {
