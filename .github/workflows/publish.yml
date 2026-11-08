@@ -17,12 +17,12 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Do publish
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: latest
           registry-url: "https://registry.npmjs.org"
-      - run: npm i -g npm@latest && npm ci
-      - run: npm publish
+      - run: npm i -g npm@latest
+      - run: npm publish --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
