@@ -21,8 +21,5 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: latest
-          registry-url: "https://registry.npmjs.org"
       - run: npm i -g npm@latest
-      - run: npm publish --ignore-scripts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      - run: npm publish --provenance --ignore-scripts
