@@ -9,7 +9,7 @@ export type statusClientError = 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 
 // Server error responses (500 – 599)
 export type statusServerError = 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 510 | 511
 
-export type statusCode = number | statusInformational | statusSuccessful | statusRedirection | statusClientError | statusServerError
+export type statusCode = statusInformational | statusSuccessful | statusRedirection | statusClientError | statusServerError
 export type statusMessage = string
 
 export type languageCode = 'en' | 'zh' | 'ja'
