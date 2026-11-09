@@ -11,7 +11,7 @@ In-takes HTTP status code and language code (default to 'en'), spits out respons
 
 Based on [MDN web docs for HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 
-Supported languages: English (`en`) and Chinese (`zh`).
+Supported languages: English (`en`) and Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn).
 
 ## Usage
 
@@ -37,7 +37,7 @@ console.log(zhResponse);
 // Output: { code: 404, message: '未找到' }
 ```
 
-For example, the following code snippet validates a user input MongoDB ObjectId and return an 404 response object for non-valid payload:
+For example, the following snippet validates a user-supplied MongoDB ObjectId and returns a 404 response object for an invalid payload:
 
 ```javascript
 import { getStatus } from "http-response-text";
@@ -50,11 +50,24 @@ const findById = async (collectionName, id) => {
 };
 ```
 
-The returned object in this will be:
+The returned object looks like this:
 
 ```javascript
 {
   code: 404,
   message: 'Not Found'
 }
+```
+
+## FAQs
+
+### Why Chinese uses `zh` instead of `cn`?
+
+`zh` is the ISO 639-1 language code for Chinese, while `CN` is the ISO 3166-1 alpha-2 country code for China (People's Republic of China). A language code identifies a language, not a country, so `cn` alone is not a valid language identifier.
+
+Regional variants combine both in a BCP 47 tag, such as `zh-CN` for Simplified Chinese as used in China. This package accepts only the base language code, so use `zh`:
+
+```javascript
+getStatus(404, "zh"); // { code: 404, message: '未找到' }
+getStatus(404, "cn"); // TypeScript error; returns { code: 404, message: undefined }
 ```
