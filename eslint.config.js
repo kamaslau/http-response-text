@@ -1,19 +1,17 @@
-import js from '@eslint/js'
-import { defineConfig, globalIgnores } from 'eslint/config'
-import tseslint from 'typescript-eslint'
+import js from "@eslint/js";
+import { defineConfig, globalIgnores } from "eslint/config";
+import tseslint from "typescript-eslint";
 
 export default defineConfig(
-  globalIgnores(['dist/', 'node_modules/']),
+  globalIgnores(["dist/"]),
 
   js.configs.recommended,
 
   {
-    files: ['**/*.ts'],
+    files: ["**/*.ts"],
     extends: [tseslint.configs.recommended],
     rules: {
-      'no-undef': 'off', // Handled by TypeScript itself
-      'no-unused-vars': 'off', // Superseded by the TypeScript-aware variant
-      '@typescript-eslint/no-unused-vars': 'warn',
+      "@typescript-eslint/no-unused-vars": "warn", // Downgraded from error
     },
   },
-)
+);
