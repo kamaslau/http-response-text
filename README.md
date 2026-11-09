@@ -11,7 +11,11 @@ In-takes HTTP status code and language code (default to 'en'), spits out respons
 
 Based on [MDN web docs for HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 
-Supported languages: English (`en`) and Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn).
+Supported languages:
+
+- English (`en`, default)
+- Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn)
+- Japanese (`ja`)
 
 ## Usage
 
@@ -22,7 +26,7 @@ npm i http-response-text
 pnpm add http-response-text
 ```
 
-Import the _getStatus_ method and call it with a numeric status code and optionally the language label ("en"(default) | "zh"). The method is async and returns a Promise; only the English dictionary is loaded at startup, other languages are imported on first use and cached.
+Import the _getStatus_ method and call it with a numeric status code and optionally the language label ("en"(default) | "zh" | "ja"). The method is async and returns a Promise; only the English dictionary is loaded at startup, other languages are imported on first use and cached.
 
 ```javascript
 import { getStatus } from "http-response-text";
@@ -35,6 +39,11 @@ const enResponse = await getStatus(404);
 const zhResponse = await getStatus(404, "zh");
 console.log(zhResponse);
 // Output: { code: 404, message: '未找到' }
+
+// Compare Japanese 404 response
+const jaResponse = await getStatus(404, "ja");
+console.log(jaResponse);
+// Output: { code: 404, message: '未検出' }
 ```
 
 For example, the following snippet validates a user-supplied MongoDB ObjectId and returns a 404 response object for an invalid payload:

@@ -3,6 +3,7 @@ import type { dictRecord, languageCode, outputContents, statusCode } from './typ
 
 const loaders: Partial<Record<languageCode, () => Promise<dictRecord>>> = {
   en: async () => en,
+  ja: async () => (await import('./dicts/ja.js')).dict,
   zh: async () => (await import('./dicts/zh.js')).dict
 }
 
