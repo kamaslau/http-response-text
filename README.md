@@ -26,46 +26,52 @@ npm i http-response-text
 pnpm add http-response-text
 ```
 
-Import the _getStatus_ method and call it with a numeric status code and optionally the language label ("en"(default) | "zh" | "ja"). The method is async and returns a Promise; only the English dictionary is loaded at startup, other languages are imported on first use and cached.
+Import the `getStatus` method and call it with a numeric status code and, optionally, a language code — `"en"` (default), `"zh"` or `"ja"`. The method is async, so `await` its Promise; the examples below use top-level `await` inside an ES module. Only the English dictionary is loaded at startup, while other languages are imported on first use and cached.
 
 ```javascript
 import { getStatus } from "http-response-text";
 
-// Get default English
-const enResponse = await getStatus(404);
+// Full output for 404 in the default language (English)
+const result = await getStatus(404);
+console.log(result);
 // Output: { code: 404, message: 'Not Found' }
 
-// Compare Chinese 404 response
-const zhResponse = await getStatus(404, "zh");
-console.log(zhResponse);
-// Output: { code: 404, message: '未找到' }
+// Only the message for 404 in Chinese
+const { message } = await getStatus(404, "zh");
+console.log(message);
+// Output: 未找到
 
-// Compare Japanese 404 response
-const jaResponse = await getStatus(404, "ja");
-console.log(jaResponse);
-// Output: { code: 404, message: '未検出' }
+// Only the message for 404 in Japanese, renamed to jaMessage
+const { message: jaMessage } = await getStatus(404, "ja");
+console.log(jaMessage);
+// Output: 未検出
 ```
 
-For example, the following snippet rejects a user-supplied identifier that is not a valid MongoDB ObjectId before querying the database, and returns a 404 response object instead of a 401. Replying 404 to a malformed identifier makes the response indistinguishable from the one for a missing record, so an attacker cannot probe endpoints to enumerate valid ones:
+For example, the snippet below rejects a user-supplied identifier that is not a valid MongoDB ObjectId before querying the database:
 
 ```javascript
 import { getStatus } from "http-response-text";
 import { ObjectId } from "mongodb";
 
-const findById = async (id) => {
-  if (!ObjectId.isValid(id)) return await getStatus(404);
+const findById = async (collectionName, id) => {
+  // Scenario 1: used inside another function — log the rejection and return an empty result
+  if (!ObjectId.isValid(id)) {
+    const { code, message } = await getStatus(401);
+    console.warn(
+      `findById(${collectionName}): invalid ObjectId "${String(id)}" (${code} ${message})`,
+    );
+
+    return null;
+  }
 
   // ...
 };
 ```
 
-The returned object looks like this:
+When the function is a request handler, reply with `404` instead of `401`. A malformed identifier then gets the same response as a missing record, so an attacker cannot probe endpoints to enumerate valid identifiers:
 
 ```javascript
-{
-  code: 404,
-  message: 'Not Found'
-}
+if (!ObjectId.isValid(id)) return await getStatus(404);
 ```
 
 ## Credited by
