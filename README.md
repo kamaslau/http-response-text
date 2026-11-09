@@ -11,7 +11,7 @@ In-takes HTTP status code and language code (default to 'en'), spits out respons
 
 Based on [MDN web docs for HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 
-Supported languages:
+## Supported Languages
 
 - English (`en`, default)
 - Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn)
@@ -26,7 +26,9 @@ npm i http-response-text
 pnpm add http-response-text
 ```
 
-Import the `getStatus` method and call it with a numeric status code and, optionally, a language code — `"en"` (default), `"zh"` or `"ja"`. The method is async, so `await` its Promise; the examples below use top-level `await` inside an ES module. Only the English dictionary is loaded at startup, while other languages are imported on first use and cached.
+Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"zh"` or `"ja"`.
+
+The method is async, so `await` its Promise; the examples below use top-level `await` inside an ES module. Only the English dictionary is loaded at startup, while other languages are imported on first use and cached.
 
 ```javascript
 import { getStatus } from "http-response-text";
@@ -36,12 +38,12 @@ const result = await getStatus(404);
 console.log(result);
 // Output: { code: 404, message: 'Not Found' }
 
-// Only the message for 404 in Chinese
+// Only get message for 404 in Chinese
 const { message } = await getStatus(404, "zh");
 console.log(message);
 // Output: 未找到
 
-// Only the message for 404 in Japanese, renamed to jaMessage
+// Only get message for 404 in Japanese, and rename to jaMessage
 const { message: jaMessage } = await getStatus(404, "ja");
 console.log(jaMessage);
 // Output: 未検出
@@ -54,7 +56,6 @@ import { getStatus } from "http-response-text";
 import { ObjectId } from "mongodb";
 
 const findById = async (collectionName, id) => {
-  // Scenario 1: used inside another function — log the rejection and return an empty result
   if (!ObjectId.isValid(id)) {
     const { code, message } = await getStatus(401);
     console.warn(
