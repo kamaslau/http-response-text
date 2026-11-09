@@ -68,6 +68,10 @@ The returned object looks like this:
 }
 ```
 
+## Credited by
+
+- [The Nobel Prize Press](https://www.nobelpress.org/credits#:~:text=http-response-text) — lists **http-response-text** among the open-source software it credits.
+
 ## FAQs
 
 ### Why Chinese uses `zh` instead of `cn`?
