@@ -13,29 +13,44 @@ Based on [MDN web docs for HTTP response status codes](https://developer.mozilla
 
 Supported languages: English (`en`) and Chinese (`zh`).
 
-## Installation
-
-- PNPM `pnpm add http-response-text`
-- NPM `npm install http-response-text`
-
 ## Usage
 
-Import the _getStatus_ method and call it with a numeric status code.
+```bash
+npm i http-response-text
 
-For example, the following code snippet validates a user input object id for MongoDB and return an 404 response object for non-valid payload:
+# Or PNPM
+pnpm add http-response-text
+```
+
+Import the _getStatus_ method and call it with a numeric status code and optionally the language label ("en"(default)|"zh").
 
 ```javascript
-import { ObjectId } from "mongodb";
 import { getStatus } from "http-response-text";
 
+// Get default English
+const enResponse = getStatus(404);
+// Output: { code: 404, message: 'Not Found' }
+
+// Compare Chinese 404 response
+const zhResponse = getStatus(404, "zh");
+console.log(zhResponse);
+// Output: { code: 404, message: '未找到' }
+```
+
+For example, the following code snippet validates a user input MongoDB ObjectId and return an 404 response object for non-valid payload:
+
+```javascript
+import { getStatus } from "http-response-text";
+import { ObjectId } from "mongodb";
+
 const findById = async (collectionName, id) => {
-  if (!ObjectId.isValid(id)) return getStatus(404) ?? null;
+  if (!ObjectId.isValid(id)) return getStatus(404);
 
   // ...
 };
 ```
 
-This will return an object like this:
+The returned object in this will be:
 
 ```javascript
 {
