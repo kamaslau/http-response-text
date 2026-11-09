@@ -6,8 +6,7 @@ const loaders = {
 };
 const dictionaries = new Map([['en', en]]);
 export const getStatus = async (code = 404, lang = 'en') => {
-    const load = loaders[lang];
-    if (!load) {
+    if (!Object.hasOwn(loaders, lang)) {
         return {
             code,
             message: undefined
@@ -15,7 +14,7 @@ export const getStatus = async (code = 404, lang = 'en') => {
     }
     let dict = dictionaries.get(lang);
     if (!dict) {
-        dict = await load();
+        dict = await loaders[lang]();
         dictionaries.set(lang, dict);
     }
     return {
