@@ -1,5 +1,5 @@
 // Informational responses (100 – 199)
-export type statusInformational = 100 | 101 | 102 | 103
+export type statusInformational = 100 | 101 | 102 | 103 | 104
 // Successful responses (200 – 299)
 export type statusSuccessful = 200 | 201 | 202 | 203 | 204 | 205 | 206 | 207 | 208 | 226
 // Redirection messages (300 – 399)
