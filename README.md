@@ -22,17 +22,17 @@ npm i http-response-text
 pnpm add http-response-text
 ```
 
-Import the _getStatus_ method and call it with a numeric status code and optionally the language label ("en"(default)|"zh").
+Import the _getStatus_ method and call it with a numeric status code and optionally the language label ("en"(default) | "zh"). The method is async and returns a Promise; only the English dictionary is loaded at startup, other languages are imported on first use and cached.
 
 ```javascript
 import { getStatus } from "http-response-text";
 
 // Get default English
-const enResponse = getStatus(404);
+const enResponse = await getStatus(404);
 // Output: { code: 404, message: 'Not Found' }
 
 // Compare Chinese 404 response
-const zhResponse = getStatus(404, "zh");
+const zhResponse = await getStatus(404, "zh");
 console.log(zhResponse);
 // Output: { code: 404, message: '未找到' }
 ```
@@ -43,8 +43,8 @@ For example, the following snippet validates a user-supplied MongoDB ObjectId an
 import { getStatus } from "http-response-text";
 import { ObjectId } from "mongodb";
 
-const findById = async (collectionName, id) => {
-  if (!ObjectId.isValid(id)) return getStatus(404);
+const findById = async (id) => {
+  if (!ObjectId.isValid(id)) return await getStatus(404);
 
   // ...
 };
@@ -68,6 +68,6 @@ The returned object looks like this:
 Regional variants combine both in a BCP 47 tag, such as `zh-CN` for Simplified Chinese as used in China. This package accepts only the base language code, so use `zh`:
 
 ```javascript
-getStatus(404, "zh"); // { code: 404, message: '未找到' }
-getStatus(404, "cn"); // TypeScript error; returns { code: 404, message: undefined }
+await getStatus(404, "zh"); // { code: 404, message: '未找到' }
+await getStatus(404, "cn"); // TypeScript error; returns { code: 404, message: undefined }
 ```

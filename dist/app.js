@@ -1,10 +1,24 @@
 import { dict as en } from './dicts/en.js';
-import { dict as zh } from './dicts/zh.js';
-const dicts = { en, zh };
+const loaders = {
+    en: async () => en,
+    zh: async () => (await import('./dicts/zh.js')).dict
+};
+const dictionaries = new Map([['en', en]]);
 export const getStatus = async (code = 404, lang = 'en') => {
-    const result = {
+    const load = loaders[lang];
+    if (!load) {
+        return {
+            code,
+            message: undefined
+        };
+    }
+    let dict = dictionaries.get(lang);
+    if (!dict) {
+        dict = await load();
+        dictionaries.set(lang, dict);
+    }
+    return {
         code,
-        message: dicts[lang]?.[code]
+        message: dict[code]
     };
-    return result;
 };
