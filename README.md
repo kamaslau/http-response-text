@@ -46,7 +46,7 @@ console.log(jaResponse);
 // Output: { code: 404, message: '未検出' }
 ```
 
-For example, the following snippet validates a user-supplied MongoDB ObjectId and returns a 404 response object for an invalid payload:
+For example, the following snippet rejects a user-supplied identifier that is not a valid MongoDB ObjectId before querying the database, and returns a 404 response object instead of a 401. Replying 404 to a malformed identifier makes the response indistinguishable from the one for a missing record, so an attacker cannot probe endpoints to enumerate valid ones:
 
 ```javascript
 import { getStatus } from "http-response-text";
