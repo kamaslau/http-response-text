@@ -6,6 +6,7 @@ export const dict: dictRecord = {
   101: 'Switching Protocols',
   102: 'Processing',
   103: 'Early Hints',
+  104: 'Upload Resumption Supported',
 
   // Successful responses
   200: 'OK',
