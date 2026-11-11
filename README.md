@@ -15,6 +15,7 @@ Based on [MDN web docs for HTTP response status codes](https://developer.mozilla
 
 - English (`en`, default)
 - Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn)
+- French (`fr`)
 - Japanese (`ja`)
 
 ## Usage
@@ -26,7 +27,7 @@ npm i http-response-text
 pnpm add http-response-text
 ```
 
-Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"zh"` or `"ja"`.
+Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"zh"`, `"ja"` or `"fr"`.
 
 The method is async, so `await` its Promise; the examples below use top-level `await` inside an ES module. Only the English dictionary is loaded at startup, while other languages are imported on first use and cached.
 
@@ -43,7 +44,12 @@ const { message } = await getStatus(404, "zh");
 console.log(message);
 // Output: 未找到
 
-// Only get message for 404 in Japanese, and rename to jaMessage
+// Only get message for 404 in French
+const { message: frMessage } = await getStatus(404, "fr");
+console.log(frMessage);
+// Output: Non Trouvé
+
+// Or Japanese
 const { message: jaMessage } = await getStatus(404, "ja");
 console.log(jaMessage);
 // Output: 未検出
