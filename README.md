@@ -81,6 +81,25 @@ When the function is a request handler, reply with `404` instead of `401`. A mal
 if (!ObjectId.isValid(id)) return await getStatus(404);
 ```
 
+### Listing available languages
+
+`listLanguages` takes no arguments and resolves to a `Set` of the language codes that ship with a dictionary in this package. Sets are inherently de-duplicated, and each call returns a fresh instance, so the result can be mutated by the caller without side effects.
+
+```javascript
+import { listLanguages } from "http-response-text";
+
+const languages = await listLanguages();
+console.log(languages);
+// Output: Set(4) { 'en', 'ja', 'fr', 'zh' }
+
+// Validate user input before requesting a message
+const requested = "de";
+
+if (!(await listLanguages()).has(requested)) {
+  console.warn(`Unsupported language "${requested}", falling back to "en"`);
+}
+```
+
 ## Credited by
 
 - [The Nobel Prize Press](https://www.nobelpress.org/credits#:~:text=http-response-text) — lists **http-response-text** among the open-source software it credits.

@@ -1,6 +1,6 @@
 {
   "name": "http-response-text",
-  "version": "0.10.0",
+  "version": "0.11.0",
   "author": "Lau, Kamas <kamaslau@dingtalk.com> (https://www.kamaslau.com/)",
   "license": "MIT",
   "description": "In-takes HTTP status code and language code (default to 'en'), spits out human-readable response text.",
@@ -17,7 +17,9 @@
   "type": "module",
   "main": "dist/app.js",
   "types": "dist/app.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "node --test",
     "build": "tsc",
@@ -26,7 +28,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@tsconfig/node26": "^26.0.1",
+    "@tsconfig/node26": "^26.0.2",
     "@types/node": "^26",
     "@typescript/native": "npm:typescript@^7.0.2",
     "eslint": "^10.14.0",

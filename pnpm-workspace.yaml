@@ -1,0 +1,2 @@
+minimumReleaseAgeExclude:
+  - '@tsconfig/node26@26.0.2'
