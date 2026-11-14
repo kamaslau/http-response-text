@@ -3,8 +3,9 @@ import type { dictRecord, languageCode, outputContents, statusCode } from './typ
 
 const loaders: Record<languageCode, () => Promise<dictRecord>> = {
   en: async () => en,
-  ja: async () => (await import('./dicts/ja.js')).dict,
+  de: async () => (await import('./dicts/de.js')).dict,
   fr: async () => (await import('./dicts/fr.js')).dict,
+  ja: async () => (await import('./dicts/ja.js')).dict,
   zh: async () => (await import('./dicts/zh.js')).dict
 }
 

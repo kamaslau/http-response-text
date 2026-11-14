@@ -14,20 +14,24 @@ Based on [MDN web docs for HTTP response status codes](https://developer.mozilla
 ## Supported Languages
 
 - English (`en`, default)
-- Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn)
+- German (`de`)
 - French (`fr`)
 - Japanese (`ja`)
+- Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn)
+
+To get all supported language codes, use [listLanguages](#listing-available-languages).
 
 ## Usage
 
 ```bash
-npm i http-response-text
-
-# Or PNPM
+# PNPM (recommended)
 pnpm add http-response-text
+
+# Or NPM
+npm i http-response-text
 ```
 
-Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"zh"`, `"ja"` or `"fr"`.
+Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"de"`, `"fr"`, `"ja"` or `"zh"`.
 
 The method is async, so `await` its Promise; the examples below use top-level `await` inside an ES module. Only the English dictionary is loaded at startup, while other languages are imported on first use and cached.
 
@@ -39,10 +43,10 @@ const result = await getStatus(404);
 console.log(result);
 // Output: { code: 404, message: 'Not Found' }
 
-// Only get message for 404 in Chinese
-const { message } = await getStatus(404, "zh");
-console.log(message);
-// Output: 未找到
+// Only get message for 404 in German
+const { message: deMessage } = await getStatus(404, "de");
+console.log(deMessage);
+// Output: Nicht gefunden
 
 // Only get message for 404 in French
 const { message: frMessage } = await getStatus(404, "fr");
@@ -53,6 +57,11 @@ console.log(frMessage);
 const { message: jaMessage } = await getStatus(404, "ja");
 console.log(jaMessage);
 // Output: 未検出
+
+// Or Chinese
+const { message: zhMessage } = await getStatus(404, "zh");
+console.log(zhMessage);
+// Output: 未找到
 ```
 
 For example, the snippet below rejects a user-supplied identifier that is not a valid MongoDB ObjectId before querying the database:
@@ -90,10 +99,10 @@ import { listLanguages } from "http-response-text";
 
 const languages = await listLanguages();
 console.log(languages);
-// Output: Set(4) { 'en', 'ja', 'fr', 'zh' }
+// Output: Set(5) { 'en', 'de', 'fr', 'ja', 'zh' }
 
 // Validate user input before requesting a message
-const requested = "de";
+const requested = "es";
 
 if (!(await listLanguages()).has(requested)) {
   console.warn(`Unsupported language "${requested}", falling back to "en"`);

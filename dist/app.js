@@ -1,8 +1,9 @@
 import { dict as en } from './dicts/en.js';
 const loaders = {
     en: async () => en,
-    ja: async () => (await import('./dicts/ja.js')).dict,
+    de: async () => (await import('./dicts/de.js')).dict,
     fr: async () => (await import('./dicts/fr.js')).dict,
+    ja: async () => (await import('./dicts/ja.js')).dict,
     zh: async () => (await import('./dicts/zh.js')).dict
 };
 const dictionaries = new Map([['en', en]]);
