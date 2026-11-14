@@ -15,6 +15,7 @@ Based on [MDN web docs for HTTP response status codes](https://developer.mozilla
 
 - English (`en`, default)
 - German (`de`)
+- Spanish (`es`)
 - French (`fr`)
 - Japanese (`ja`)
 - Chinese (`zh`) — see [why Chinese uses `zh` instead of `cn`](#why-chinese-uses-zh-instead-of-cn)
@@ -31,7 +32,7 @@ pnpm add http-response-text
 npm i http-response-text
 ```
 
-Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"de"`, `"fr"`, `"ja"` or `"zh"`.
+Import the `getStatus` method and call it with a numeric status code and, optionally, a language code string — `"en"` (default), `"de"`, `"es"`, `"fr"`, `"ja"` or `"zh"`.
 
 The method is async, so `await` its Promise; the examples below use top-level `await` inside an ES module. Only the English dictionary is loaded at startup, while other languages are imported on first use and cached.
 
@@ -47,6 +48,11 @@ console.log(result);
 const { message: deMessage } = await getStatus(404, "de");
 console.log(deMessage);
 // Output: Nicht gefunden
+
+// Only get message for 404 in Spanish
+const { message: esMessage } = await getStatus(404, "es");
+console.log(esMessage);
+// Output: No encontrado
 
 // Only get message for 404 in French
 const { message: frMessage } = await getStatus(404, "fr");
@@ -92,17 +98,17 @@ if (!ObjectId.isValid(id)) return await getStatus(404);
 
 ### Listing available languages
 
-`listLanguages` takes no arguments and resolves to a `Set` of the language codes that ship with a dictionary in this package. Sets are inherently de-duplicated, and each call returns a fresh instance, so the result can be mutated by the caller without side effects.
+`listLanguages` takes no arguments and resolves to a `Set` of the language codes that ship with a dictionary in this package. Sets are inherently de-duplicated, and each call returns a fresh instance, so the result can be mutated by the caller without side effects. Codes are ordered with English first, then the remaining languages alphabetically.
 
 ```javascript
 import { listLanguages } from "http-response-text";
 
 const languages = await listLanguages();
 console.log(languages);
-// Output: Set(5) { 'en', 'de', 'fr', 'ja', 'zh' }
+// Output: Set(6) { 'en', 'de', 'es', 'fr', 'ja', 'zh' }
 
 // Validate user input before requesting a message
-const requested = "es";
+const requested = "it";
 
 if (!(await listLanguages()).has(requested)) {
   console.warn(`Unsupported language "${requested}", falling back to "en"`);

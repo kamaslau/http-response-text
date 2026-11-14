@@ -12,7 +12,7 @@ export type statusServerError = 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 
 export type statusCode = statusInformational | statusSuccessful | statusRedirection | statusClientError | statusServerError
 export type statusMessage = string
 
-export type languageCode = 'en' | 'de' | 'fr' | 'ja' | 'zh'
+export type languageCode = 'en' | 'de' | 'es' | 'fr' | 'ja' | 'zh'
 
 export type outputContents = {
   code: statusCode;
