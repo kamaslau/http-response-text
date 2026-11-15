@@ -60,6 +60,19 @@ pnpm test
 
 > **Important**: If you accidentally run `npm install` or `yarn`, please delete the generated `package-lock.json` / `yarn.lock` and re-run `pnpm install` before committing. Only `pnpm-lock.yaml` should be tracked in version control.
 
+### Release-age quarantine
+
+`pnpm-workspace.yaml` sets `minimumReleaseAge: 1440`, so pnpm refuses dependency versions published in the last 24 hours and also verifies the committed lockfile against that rule — including in CI. An intentional upgrade that lands inside the window fails with `ERR_PNPM_MINIMUM_RELEASE_AGE_VIOLATION`.
+
+The remedy is a **temporary** exemption for the exact versions involved:
+
+```yaml
+minimumReleaseAgeExclude:
+  - some-package@1.2.3
+```
+
+Delete the entry once the version has aged past the cutoff; the list is not meant to accumulate. Note that pnpm rewrites `pnpm-workspace.yaml` when it touches the file and drops comments in the process, so keep explanatory notes here rather than inline.
+
 ## Capitalisation of Dictionary Entries
 
 Dictionary strings are not UI labels that a designer can restyle — they are localized reason phrases, so each one follows the spelling rules of its own language rather than a single shared capitalisation style:
