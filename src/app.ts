@@ -1,6 +1,9 @@
 import { dict as en } from './dicts/en.js'
 import type { dictRecord, languageCode, outputContents, statusCode } from './types.js'
 
+// Re-exported so consumers can annotate their own wrappers without deep imports.
+export type * from './types.js'
+
 const loaders: Record<languageCode, () => Promise<dictRecord>> = {
   en: async () => en,
   de: async () => (await import('./dicts/de.js')).dict,

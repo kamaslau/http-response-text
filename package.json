@@ -17,6 +17,14 @@
   "type": "module",
   "main": "dist/app.js",
   "types": "dist/app.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/app.d.ts",
+      "default": "./dist/app.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],

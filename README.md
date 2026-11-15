@@ -96,6 +96,17 @@ When the function is a request handler, reply with `404` instead of `401`. A mal
 if (!ObjectId.isValid(id)) return await getStatus(404);
 ```
 
+### TypeScript types
+
+The `statusCode` and `languageCode` types ship with the package, so wrappers and configuration objects can be annotated without relying on deep imports:
+
+```typescript
+import { getStatus, type languageCode, type statusCode } from "http-response-text";
+
+const respond = async (code: statusCode, lang: languageCode = "en") =>
+  (await getStatus(code, lang)).message;
+```
+
 ### Listing available languages
 
 `listLanguages` takes no arguments and resolves to a `Set` of the language codes that ship with a dictionary in this package. Sets are inherently de-duplicated, and each call returns a fresh instance, so the result can be mutated by the caller without side effects. Codes are ordered with English first, then the remaining languages alphabetically.

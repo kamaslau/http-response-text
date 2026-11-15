@@ -1,4 +1,5 @@
 import type { languageCode, outputContents, statusCode } from './types.js';
+export type * from './types.js';
 /**
  * Lists all available languages, i.e. every language that ships with a dictionary file.
  * @returns A de-duplicated set of language codes.
