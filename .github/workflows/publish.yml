@@ -15,7 +15,34 @@ jobs:
           echo "🎉 The job was triggered by '${{ github.event_name }}' event on branch '${{ github.ref }}' of repository '${{ github.repository }}', running on '${{ runner.os }}/${{ runner.arch }}' runner."
 
       - uses: actions/checkout@v7
+
+      - name: Verify the tag matches the package version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          version="$(npm pkg get version | tr -d '"')"
+          if [ "$tag" != "$version" ]; then
+            echo "::error::Tag '${GITHUB_REF_NAME}' does not match the package version '${version}'. Bump 'version' in package.json or retag the release."
+            exit 1
+          fi
+          echo "Publishing version ${version}, matching tag '${GITHUB_REF_NAME}'."
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.18.0
       - uses: actions/setup-node@v7
         with:
           node-version: latest
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint
+      - run: pnpm test
+
+      - name: Verify the committed build output is up to date
+        run: |
+          pnpm build
+          if ! git diff --exit-code dist; then
+            echo "::error::'dist/' is stale. Run 'pnpm build' and commit the output before releasing."
+            exit 1
+          fi
+
       - run: npm publish --provenance --ignore-scripts
