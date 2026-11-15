@@ -13,7 +13,7 @@ export const dict = {
     204: 'Sin contenido',
     205: 'Restablecer contenido',
     206: 'Contenido parcial',
-    207: 'Multi-Estado',
+    207: 'Multi-estado',
     208: 'Ya reportado',
     226: 'IM usado',
     // Mensajes de redirección

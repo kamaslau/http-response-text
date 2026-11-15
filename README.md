@@ -57,7 +57,7 @@ console.log(esMessage);
 // Only get message for 404 in French
 const { message: frMessage } = await getStatus(404, "fr");
 console.log(frMessage);
-// Output: Non Trouvé
+// Output: Non trouvé
 
 // Or Japanese
 const { message: jaMessage } = await getStatus(404, "ja");
