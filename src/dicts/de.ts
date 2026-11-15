@@ -24,7 +24,7 @@ export const dict: dictRecord = {
   300: 'Mehrere Auswahlmöglichkeiten',
   301: 'Dauerhaft verschoben',
   302: 'Gefunden',
-  303: 'Siehe Andere',
+  303: 'Siehe auch',
   304: 'Nicht verändert',
   305: 'Proxy verwenden', // Veraltet
   306: 'Proxy wechseln', // Unbenutzt
