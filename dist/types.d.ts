@@ -10,4 +10,4 @@ export type outputContents = {
     code: statusCode;
     message: statusMessage | undefined;
 };
-export type dictRecord = Record<number, string>;
+export type dictRecord = Record<statusCode, string>;

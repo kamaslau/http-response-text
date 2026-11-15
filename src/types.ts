@@ -19,4 +19,6 @@ export type outputContents = {
   message: statusMessage | undefined;
 }
 
-export type dictRecord = Record<number, string>
+// Every dictionary must cover every status code, so a code added here fails the
+// build until all dictionaries are updated.
+export type dictRecord = Record<statusCode, string>
